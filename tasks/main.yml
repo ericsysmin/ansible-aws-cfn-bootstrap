@@ -32,7 +32,6 @@
 - name: AWS CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
   when: ansible_os_family == "Debian"
-  
--  file: path=/etc/init.d/cfn-hup mode=0755
--  file: path=/opt/aws/bin/ state=directory
--  file: src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
+  file: path=/etc/init.d/cfn-hup mode=0755
+  file: path=/opt/aws/bin/ state=directory
+  file: src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
