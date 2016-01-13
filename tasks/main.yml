@@ -27,7 +27,8 @@
   
 - name: AWS CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
-  creates: /etc/init.d/cfn-hup
+  args:
+    creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "RedHat"
 
 - name: AWS CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
