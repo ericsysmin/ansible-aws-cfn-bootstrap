@@ -26,3 +26,4 @@
   file:
     src: /tmp/aws-cfn-bootstrap-1.4/init/redhat/cfn-hup
     dest: /etc/init.d/cfn-hup
+    mode: 755
