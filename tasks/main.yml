@@ -8,7 +8,8 @@
   when: ansible_os_family == "RedHat"
 
 - name: AWS CFN Bootstrap | Install Python Modules
-  pip: name=pystache argparse python-daemon requests
+  pip: 
+    name: pystache argparse python-daemon requests
   
 - name: AWS CFN Boostrap | Download the aws-cfn-bootstrap from AWS
   get_url: 
