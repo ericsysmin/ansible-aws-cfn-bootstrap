@@ -24,5 +24,6 @@
   
 - name: AWS CFN Bootstrap | Ubuntu | Add cfn-hup to init.d scripts
   copy: 
+    remote_src: True
     src: /tmp/aws-cfn-bootstrap-1.4/init/ubuntu/cfn-hup
     dest: /etc/init.d/cfn-hup
