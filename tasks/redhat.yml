@@ -9,21 +9,21 @@
 
 - name: AWS CFN Boostrap | RedHat | Download the aws-cfn-bootstrap from AWS
   get_url: 
-    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz 
+    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz 
     dest: /tmp/
 
 - name: AWS CFN Bootstrap | RedHat | Unarchive aws-cfn-bootstrap
   unarchive:
     copy: no
-    dest: /tmp/
-    src: /tmp/aws-cfn-bootstrap-latest.tar.gz
+    src: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    dest: /opt/
+    creates: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
   
 - name: AWS CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Module
-  easy_install: 
-    name: /tmp/aws-cfn-bootstrap-latest.tar.gz
-  
-- name: AWS CFN Bootstrap | RedHat | Add cfn-hup to init.d scripts
-  command: cp /tmp/aws-cfn-bootstrap-1.4/init/redhat/cfn-hup /etc/init.d/cfn-hup
+  easy_install: name=/opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
 
-- name: AWS CFN Bootstrap | RedHat | Set cfn-hup to be executable
-  file: path=/etc/init.d/cfn-hup mode=0755
+- command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
+  creates: /etc/init.d/cfn-hup
+- file: path=/etc/init.d/cfn-hup mode=0755
+- file: path=/opt/aws/bin/ state=directory
+- file: src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link

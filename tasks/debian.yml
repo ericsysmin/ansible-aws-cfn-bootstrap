@@ -23,7 +23,7 @@
     name: /tmp/aws-cfn-bootstrap-latest.tar.gz
   
 - name: AWS CFN Bootstrap | Ubuntu | Add cfn-hup to init.d scripts
-  command: cp /tmp/aws-cfn-bootstrap-1.4/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
+  command: cp /usr/bin/cfn-hup /etc/init.d/cfn-hup
 
 - name: AWS CFN Bootstrap | Ubuntu | Set cfn-hup to be executable
   file: path=/etc/init.d/cfn-hup mode=0755
