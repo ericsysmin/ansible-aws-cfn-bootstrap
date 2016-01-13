@@ -1,8 +1,37 @@
 ---
-- include: debian.yml
-  when: ansible_os_family == 'Debian'
-  tags: package
-    
-- include: redhat.yml
-  when: ansible_os_family == 'RedHat'
-  tags: package
+- name: AWS CFN Boostrap | Ubuntu | Install python-pip
+  apt: name=python-pip state=installed
+  when: ansible_os_family == "Debian"
+  
+- name: AWS CFN Boostrap | RedHat | Install python-pip
+  yum: name=python-pip state=installed
+  when: ansible_os_family == "RedHat"
+
+- name: AWS CFN Bootstrap | Install Python Modules
+  pip: name=pystache argparse python-daemon requests
+  
+- name: AWS CFN Boostrap | Download the aws-cfn-bootstrap from AWS
+  get_url: 
+    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz 
+    dest: /tmp/
+
+- name: AWS CFN Bootstrap | Unarchive aws-cfn-bootstrap
+  unarchive:
+    copy: no
+    src: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    dest: /opt/
+  
+- name: AWS CFN Bootstrap | Install AWS CFN Bootstrap Module
+  easy_install: name=/tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+  
+- name: AWS CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Init
+  command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
+  when: ansible_os_family == "RedHat"
+
+- name: AWS CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
+  command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
+  when: ansible_os_family == "Debian"
+  
+-  file: path=/etc/init.d/cfn-hup mode=0755
+-  file: path=/opt/aws/bin/ state=directory
+-  file: src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
