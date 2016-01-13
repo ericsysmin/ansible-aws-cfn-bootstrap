@@ -1,0 +1,28 @@
+---
+- name: AWS CFN Boostrap | Install Python PIP
+  yum:
+    name: python-pip
+    
+- name: AWS CFN Bootstrap | Install Python Modules
+  pip: 
+    name: pystache, argparse, python-daemon, requests
+
+- name: AWS CFN Boostrap | Download the aws-cfn-bootstrap from AWS
+  get_url: 
+    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz 
+    dest: /tmp/
+
+- name: AWS CFN Bootstrap | Unarchive aws-cfn-bootstrap
+  unarchive:
+    copy: no
+    dest: /tmp/
+    src: /tmp/aws-cfn-bootstrap-latest.tar.gz
+  
+- name: AWS CFN Bootstrap | Install Python Modules
+  easy_install: 
+    name: /tmp/aws-cfn-bootstrap-latest.tar.gz
+  
+- name: AWS CFN Bootstrap | Add cfn-hup to init.d scripts
+  copy: 
+    src: /tmp/aws-cfn-bootstrap-latest/init/redhat/cfn-hup
+    dest: /etc/init.d/cfn-hup
