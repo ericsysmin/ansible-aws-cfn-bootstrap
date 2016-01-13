@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  author: Eric Anderson
+  description: This role will deploy the cfn-bootstrap to your RedHat and Debian servers.
+  license: BSD
+  min_ansible_version: 1.4
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Ubuntu
+    versions:
+    - oneiric
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
+    - utopic
+    - vivid
+  categories:
+  - cloud
+  - cloud:ec2
+  - packaging
+  - system
+dependencies: []
+  
