@@ -24,3 +24,6 @@
   
 - name: AWS CFN Bootstrap | RedHat | Add cfn-hup to init.d scripts
   command: cp /tmp/aws-cfn-bootstrap-1.4/init/redhat/cfn-hup /etc/init.d/cfn-hup
+
+- name: AWS CFN Bootstrap | RedHat | Set cfn-hup to be executable
+  file: path=/etc/init.d/cfn-hup mode=0755
