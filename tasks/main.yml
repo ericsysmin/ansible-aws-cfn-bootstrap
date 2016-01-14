@@ -8,8 +8,12 @@
   when: ansible_os_family == "RedHat"
 
 - name: AWS CFN Bootstrap | Install Python Modules
-  pip: 
-    name: pystache argparse python-daemon requests
+  pip: name={{ item }} state=present
+  with_items:
+    - pystache
+    - argparse
+    - python-daemon
+    - requests
   
 - name: AWS CFN Boostrap | Download the aws-cfn-bootstrap from AWS
   get_url: 
@@ -33,6 +37,8 @@
 
 - name: AWS CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
+  args:
+    creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "Debian"
 
 - name: AWS CFN Bootstrap | Configure Files and Directories
