@@ -41,7 +41,11 @@
     creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "Debian"
 
-- name: AWS CFN Bootstrap | Configure Files and Directories
+- name: AWS CFN Bootstrap | Set cfn-hup permissions
   action: file path=/etc/init.d/cfn-hup mode=0755
+  
+- name: Create /opt/aws/bin/ directory
   action: file path=/opt/aws/bin/ state=directory
+  
+- name: Create link file from /usr/bin/cfn-hub to /opt/aws/bin/cfn-hup
   action: file src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
