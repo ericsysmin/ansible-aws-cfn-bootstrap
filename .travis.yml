@@ -6,7 +6,6 @@ before_install:
  - sudo apt-get install -qq python-apt python-pycurl
 install:
   - pip install ansible
-  - echo -e 'localhost  ansible_connection=local' > tests/inventory
   - echo -e '[defaults]\nroles_path = ../\nhostfile = ./tests/inventory' > ansible.cfg
 script:
   - ansible-playbook --syntax-check tests/role.yml
