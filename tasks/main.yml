@@ -1,13 +1,13 @@
 ---
-- name: AWS CFN Boostrap | Ubuntu | Install python-pip
+- name: CFN Boostrap | Ubuntu | Install python-pip
   apt: name=python-pip state=installed
   when: ansible_os_family == "Debian"
   
-- name: AWS CFN Boostrap | RedHat | Install python-pip
+- name: CFN Boostrap | RedHat | Install python-pip
   yum: name=python-pip state=installed
   when: ansible_os_family == "RedHat"
 
-- name: AWS CFN Bootstrap | Install Python Modules
+- name: CFN Bootstrap | Install Python Modules
   pip: name={{ item }} state=present
   with_items:
     - pystache
@@ -15,33 +15,33 @@
     - python-daemon
     - requests
   
-- name: AWS CFN Boostrap | Download the aws-cfn-bootstrap from AWS
+- name: CFN Boostrap | Download the aws-cfn-bootstrap from AWS
   get_url: 
     url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz 
     dest: /tmp/
 
-- name: AWS CFN Bootstrap | Unarchive aws-cfn-bootstrap
+- name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
     copy: no
     src: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
     dest: /opt/
   
-- name: AWS CFN Bootstrap | Install AWS CFN Bootstrap Module
+- name: CFN Bootstrap | Install AWS CFN Bootstrap Module
   easy_install: name=/tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
   
-- name: AWS CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Init
+- name: CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
   args:
     creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "RedHat"
 
-- name: AWS CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
+- name: CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
   args:
     creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "Debian"
 
-- name: AWS CFN Bootstrap | Set cfn-hup permissions
+- name: CFN Bootstrap | Set cfn-hup permissions
   action: file path=/etc/init.d/cfn-hup mode=0755
   
 - name: Create /opt/aws/bin/ directory
