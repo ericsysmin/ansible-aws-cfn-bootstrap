@@ -17,8 +17,8 @@
   
 - name: CFN Boostrap | Download the aws-cfn-bootstrap from AWS
   get_url: 
-    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz 
-    dest: /tmp/
+    url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    dest: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
 
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
