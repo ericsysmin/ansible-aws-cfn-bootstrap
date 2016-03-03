@@ -26,16 +26,16 @@
     src: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
     dest: /opt/
   
-- name: CFN Bootstrap | Install AWS CFN Bootstrap Module
+- name: CFN Bootstrap | Install CFN Bootstrap Module
   easy_install: name=/tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
   
-- name: CFN Bootstrap | RedHat | Install AWS CFN Bootstrap Init
+- name: CFN Bootstrap | RedHat | Install CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
   args:
     creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "RedHat"
 
-- name: CFN Bootstrap | Ubuntu | Install AWS CFN Bootstrap Init
+- name: CFN Bootstrap | Ubuntu | Install CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
   args:
     creates: /etc/init.d/cfn-hup
