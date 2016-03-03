@@ -2,7 +2,7 @@
 galaxy_info:
   author: Eric Anderson
   description: This role will deploy the cfn-bootstrap to your RedHat and Debian servers.
-  license: BSD
+  license: GPLv2
   min_ansible_version: 1.4
   platforms:
    - name: EL

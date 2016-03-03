@@ -1,22 +1,16 @@
-aws-cfn-bootstrap
+cfnbootstrap
 =========
 
 This role was built to deploy the aws-cfn-bootstrap to your servers.
 
+Build Status
+------------
+[![Build Status](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap.svg?branch=master)](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap)
+
 Requirements
 ------------
 
-None! Woohoo!
-
-Role Variables
---------------
-
-Currently we do not have variables that can be set.
-
-Dependencies
-------------
-
-None
+This role requires Ansible 1.4 or higher.
 
 Example Playbook
 ----------------
@@ -30,9 +24,9 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+GPLv2
 
 Author Information
 ------------------
 
-N/A
+- Eric Anderson
