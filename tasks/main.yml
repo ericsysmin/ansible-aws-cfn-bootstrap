@@ -23,6 +23,7 @@
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
     copy: no
+    list_files: yes
     src: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
     dest: /opt/
     creates: /opt/aws-cfn-bootstrap-{{ pkg_version }}
