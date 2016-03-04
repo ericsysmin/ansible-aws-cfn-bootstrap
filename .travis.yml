@@ -1,6 +1,7 @@
 ---
 language: python
 python: "2.7"
+
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq python-apt python-pycurl
@@ -16,3 +17,4 @@ script:
     | grep -q 'failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
+  - find / -name cfn-hup
