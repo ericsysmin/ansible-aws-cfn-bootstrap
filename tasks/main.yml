@@ -40,12 +40,6 @@
   args:
     creates: /etc/init.d/cfn-hup
   when: ansible_os_family == "Debian"
-
-- name: CFN Bootstrap | Ubuntu | Install CFN Bootstrap Bin
-  command: cp /opt/aws-cfn-bootstrap-{{ version }}/bin/cfn-hup /usr/bin/cfn-hup
-  args:
-    creates: /usr/bin/cfn-hup
-  when: ansible_os_family == "Debian"
   
 - name: CFN Bootstrap | Set /etc/init.d/cfn-hup permissions
   file: path=/etc/init.d/cfn-hup mode=0755
