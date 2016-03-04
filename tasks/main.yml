@@ -21,12 +21,13 @@
     dest: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
 
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
-  shell: tar -xvf aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
-    chdir: /opt
-    creates: /opt/aws-cfn-bootstrap-{{ version }}
+  unarchive:
+    src: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    dest: /opt
+    copy: no
   
 - name: CFN Bootstrap | Install CFN Bootstrap Module
-  easy_install: name=/tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+  easy_install: name=/opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
   
 - name: CFN Bootstrap | RedHat | Install CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
