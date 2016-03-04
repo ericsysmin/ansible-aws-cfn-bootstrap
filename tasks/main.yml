@@ -46,11 +46,10 @@
   
 - name: Create /opt/aws/bin/ directory
   file: path=/opt/aws/bin/ state=directory
-  
+
+- name: Create link file from /opt/aws-cfn-bootstrap-{{ version }}/bin/cfn-hup to /opt/aws/bin/cfn-hup
+  file: src=/opt/aws-cfn-bootstrap-{{ version }}/bin/cfn-hup dest=/usr/bin/cfn-hup
+  when: ansible_os_family == "Debian"
+
 - name: Create link file from /usr/bin/cfn-hup to /opt/aws/bin/cfn-hup
   file: src=/usr/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
-  when: ansible_os_family == "RedHat"
-  
-- name: Create link file from /opt/aws-cfn-bootstrap-{{ version }}/bin/cfn-hup to /opt/aws/bin/cfn-hup
-  file: src=/opt/aws-cfn-bootstrap-{{ version }}/bin/cfn-hup dest=/opt/aws/bin/cfn-hup state=link
-  when: ansible_os_family == "Debian"
