@@ -14,17 +14,18 @@
     - argparse
     - python-daemon
     - requests
-  
+
 - name: CFN Boostrap | Download the aws-cfn-bootstrap from AWS
   get_url: 
     url: https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
-    dest: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    dest: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
 
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
     copy: no
-    src: /tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+    src: /opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
     dest: /opt/
+    creates: /opt/aws-cfn-bootstrap-{{ pkg_version }}
   
 - name: CFN Bootstrap | Install CFN Bootstrap Module
   easy_install: name=/tmp/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
