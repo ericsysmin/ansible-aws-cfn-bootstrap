@@ -47,9 +47,12 @@
     creates: /usr/bin/cfn-hup
   when: ansible_os_family == "Debian"
   
-- name: CFN Bootstrap | Set cfn-hup permissions
+- name: CFN Bootstrap | Set /etc/init.d/cfn-hup permissions
   file: path=/etc/init.d/cfn-hup mode=0755
   
+- name: CFN Bootstrap | Set /usr/bin/cfn-hup permissions
+  file: path=/usr/bin/cfn-hup mode=0755  
+
 - name: Create /opt/aws/bin/ directory
   file: path=/opt/aws/bin/ state=directory
 
