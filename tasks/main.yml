@@ -27,7 +27,7 @@
     dest: /opt
   
 - name: CFN Bootstrap | Install CFN Bootstrap Module
-  easy_install: name=/opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
+  pip: name=/opt/aws-cfn-bootstrap-{{ pkg_version }}.tar.gz
   
 - name: CFN Bootstrap | RedHat | Install CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
