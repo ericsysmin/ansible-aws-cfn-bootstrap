@@ -18,4 +18,5 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   - sudo find / -name cfn-hup
-  - /etc/init.d/cfn-hup
+  - /etc/init.d/cfn-hup start
+  - /etc/init.d/cfn-hup status
