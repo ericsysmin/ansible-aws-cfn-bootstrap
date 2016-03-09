@@ -5,6 +5,7 @@ This role was built to deploy the aws-cfn-bootstrap to your servers.
 
 Build Status
 ------------
+
 [![Build Status](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap.svg?branch=master)](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap)
 
 Requirements
@@ -19,7 +20,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - role: ericsysmin.aws-cfn-bootstrap
+         - role: ericsysmin.cfnbootstrap
 
 License
 -------
