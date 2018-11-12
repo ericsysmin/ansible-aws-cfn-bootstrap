@@ -13,7 +13,6 @@ env:
     - ROLE_NAME: cfnbootstrap
   matrix:
     - MOLECULE_DISTRO: centos:7
-    - MOLECULE_DISTRO: debian:wheezy
     - MOLECULE_DISTRO: debian:jessie
     - MOLECULE_DISTRO: debian:stretch
 
