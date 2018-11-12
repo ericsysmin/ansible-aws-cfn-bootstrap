@@ -4,6 +4,7 @@
   loop:
     - pystache
     - argparse
+    - docutils
     - python-daemon
     - requests
 
