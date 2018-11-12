@@ -8,11 +8,11 @@ galaxy_info:
   platforms:
     - name: CentOS
       versions:
-        - 6
         - 7
-    - name: Ubuntu
+    - name: Debian
       versions:
-        - trusty
+        - jessie
+        - stretch
   galaxy_tags:
     - cloud
     - ec2
