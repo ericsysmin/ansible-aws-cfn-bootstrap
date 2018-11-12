@@ -4,7 +4,7 @@
   pre_tasks:
   roles:
     - role: ericsysmin.epel
-    - role: ericsysmin.pip
+    - role: geerlingguy.pip
       pip_install_packages:
         - name: pip
           state: latest
