@@ -5,4 +5,7 @@
   roles:
     - role: ericsysmin.epel
     - role: ericsysmin.pip
+      pip_install_packages:
+        - name: pip
+          state: latest
     - role: ericsysmin.cfnbootstrap
