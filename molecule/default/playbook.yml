@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   pre_tasks:
-    - name: Install python-pip
-      package: name=python-pip
   roles:
+    - role: ericsysmin.epel
+    - role: geerlingguy.pip
     - role: ericsysmin.cfnbootstrap
