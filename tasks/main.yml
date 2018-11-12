@@ -1,12 +1,4 @@
 ---
-- name: CFN Boostrap | Ubuntu | Install python-pip
-  apt: name=python-pip state=installed
-  when: ansible_os_family == "Debian"
-
-- name: CFN Boostrap | RedHat | Install python-pip
-  yum: name=python-pip state=installed
-  when: ansible_os_family == "RedHat"
-
 - name: CFN Bootstrap | Install Python Modules
   pip: name={{ item }} state=present
   loop:
