@@ -1,12 +1,13 @@
 ---
 - name: CFN Bootstrap | Install Python Modules
-  pip: name={{ item }} state=present
-  loop:
-    - pystache
-    - argparse
-    - docutils
-    - python-daemon
-    - requests
+  pip:
+    name:
+      - pystache
+      - argparse
+      - docutils
+      - python-daemon
+      - requests
+    state: present
 
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
