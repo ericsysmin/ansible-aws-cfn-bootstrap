@@ -5,4 +5,5 @@
   roles:
     - role: ericsysmin.epel
     - role: geerlingguy.pip
+      pip_upgrade: true
     - role: ericsysmin.cfnbootstrap
