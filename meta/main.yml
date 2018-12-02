@@ -2,6 +2,7 @@
 galaxy_info:
   author: ericsysmin
   role_name: cfnbootstrap
+  company: ericsysmin
   description: This role will deploy the cfn-bootstrap to your RedHat and Debian servers.
   license: GPLv2
   min_ansible_version: 2.4
