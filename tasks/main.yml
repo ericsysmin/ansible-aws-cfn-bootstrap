@@ -1,12 +1,17 @@
 ---
 - name: CFN Bootstrap | Install Python Modules
-  pip: name={{ item }} state=present
-  loop:
-    - pystache
-    - argparse
-    - docutils
-    - python-daemon
-    - requests
+  pip:
+    name:
+      - pystache
+      - argparse
+      - docutils
+      - python-daemon
+      - requests
+    state: present    
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
 
 - name: CFN Bootstrap | Unarchive aws-cfn-bootstrap
   unarchive:
@@ -16,6 +21,10 @@
 
 - name: CFN Bootstrap | Install CFN Bootstrap Module
   pip: name=https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-{{ cfnbootstrap_pkg_version }}.tar.gz
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
 
 - name: CFN Bootstrap | RedHat | Install CFN Bootstrap Init
   command: cp /opt/aws-cfn-bootstrap-{{ cfnbootstrap_version }}/init/redhat/cfn-hup /etc/init.d/cfn-hup
