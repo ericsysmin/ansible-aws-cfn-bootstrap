@@ -4,11 +4,11 @@ This role was built to deploy the aws-cfn-bootstrap to your servers.
 
 ## Build Status
 
-[![Build Status](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap.svg?branch=master)](https://travis-ci.org/ericsysmin/ansible-role-cfnbootstrap)
+[![Build Status](https://travis-ci.com/ericsysmin/ansible-role-cfnbootstrap.svg?branch=master)](https://travis-ci.com/ericsysmin/ansible-role-cfnbootstrap)
 
 ## Requirements
 
-- python-pip (install via another role or task)
+-   python-pip (install via another role or task)
 
 ## Role Variables
 
