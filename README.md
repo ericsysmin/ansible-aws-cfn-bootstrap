@@ -1,4 +1,4 @@
-# ericsymsin.cfnbootstrap
+# ericsysmin.cfnbootstrap
 
 This role was built to deploy the aws-cfn-bootstrap to your servers.
 
